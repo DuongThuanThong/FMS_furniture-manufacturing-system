@@ -25,11 +25,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = "production_tasks")
 @EntityListeners(AuditingEntityListener.class)
-public class ProductionTask {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+public class ProductionTask extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "production_order_id", nullable = false)
