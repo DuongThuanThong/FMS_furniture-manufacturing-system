@@ -4,7 +4,7 @@ import com.uth.fms.common.exception.BusinessException;
 import com.uth.fms.common.security.CustomUserDetailService;
 import com.uth.fms.common.security.CustomeUserDetail;
 import com.uth.fms.common.security.JwtTokenProvider;
-import com.uth.fms.user.dto.reponse.LoginResponse;
+import com.uth.fms.user.dto.response.LoginResponse;
 import com.uth.fms.user.dto.request.LoginRequest;
 import com.uth.fms.user.dto.request.RegisterRequest;
 import com.uth.fms.user.entity.User;
@@ -14,13 +14,11 @@ import com.uth.fms.user.services.AuthService;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.jdbc.support.CustomSQLErrorCodesTranslation;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -98,7 +96,7 @@ public class AuthServiceImpl implements AuthService {
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         //Lưu user
         userRepository.save(user);
-        return "User" + user.getUsername() + "đã đăng kí thành công!";
+        return "User " + user.getUsername() + " đã đăng kí thành công!";
     }
 
     @Override

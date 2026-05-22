@@ -30,6 +30,16 @@ public class JwtAutheFilter extends OncePerRequestFilter {
      * Header có dạng: Authorization: Bearer <token>
      */
     private String getJwtTokenFromRequest(HttpServletRequest request) {
+        // Ưu tiên đọc từ Cookie
+        if (request.getCookies() != null) {
+            for (jakarta.servlet.http.Cookie cookie : request.getCookies()) {
+                if ("accessToken".equals(cookie.getName())) {
+                    return cookie.getValue();
+                }
+            }
+        }
+
+        // Fallback đọc từ Header Authorization
         String bearerToken = request.getHeader("Authorization");
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7); // cắt bỏ "Bearer "

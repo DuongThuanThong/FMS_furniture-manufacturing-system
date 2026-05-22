@@ -14,4 +14,5 @@ dependencies {
     implementation(project(":fms-inventory"))
     implementation(project(":fms-manufacturing"))
 
+    runtimeOnly("org.postgresql:postgresql")
 }

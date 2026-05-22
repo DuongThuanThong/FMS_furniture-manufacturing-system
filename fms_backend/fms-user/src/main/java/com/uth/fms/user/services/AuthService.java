@@ -1,6 +1,6 @@
 package com.uth.fms.user.services;
 
-import com.uth.fms.user.dto.reponse.LoginResponse;
+import com.uth.fms.user.dto.response.LoginResponse;
 import com.uth.fms.user.dto.request.LoginRequest;
 import com.uth.fms.user.dto.request.RegisterRequest;
 
