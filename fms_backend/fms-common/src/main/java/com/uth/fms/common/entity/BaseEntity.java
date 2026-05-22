@@ -40,7 +40,13 @@ public abstract class BaseEntity {
     private String updatedBy;
 
     @Column(name = "is_deleted")
-    Boolean deleteFlag;
+    Boolean deleteFlag = false;
 
+    @PrePersist
+    public void prePersist() {
+        if (deleteFlag == null) {
+            deleteFlag = false;
+        }
+    }
 }
 
